@@ -157,8 +157,10 @@
   };
 
   ns.PalettesListController.prototype.onCreatePaletteClick_ = function (evt) {
+    var paletteId = this.colorPaletteSelect_.value;
     $.publish(Events.DIALOG_SHOW, {
-      dialogId : 'create-palette'
+      dialogId : 'create-palette',
+      initArgs : paletteId
     });
   };
 
@@ -178,7 +180,8 @@
     this.getSelectedPaletteColors_().forEach(function(color, index) {
       frame.forEachPixel(function (oldColor, col, row, frame, pixelIndex) {
         if (pixelIndex === index) {
-          frame.setPixel(col, row, color, pixelIndex)
+          frame.setPixel(col, row, color);
+          frame.setPixelIndex(col, row, pixelIndex);
         }
       }) 
     })
