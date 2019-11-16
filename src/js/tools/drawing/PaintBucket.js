@@ -21,7 +21,7 @@
    */
   ns.PaintBucket.prototype.applyToolAt = function(col, row, frame, overlay, event) {
     var color = this.getToolColor();
-    
+
     var sourceOnlyCurrentLayer = pskl.utils.UserAgent.isMac ? event.metaKey : event.ctrlKey;
     var sourceFrame = frame;
     if (!sourceOnlyCurrentLayer) {
@@ -39,6 +39,7 @@
   };
 
   ns.PaintBucket.prototype.replay = function (frame, replayData) {
-    pskl.PixelUtils.paintSimilarConnectedPixelsFromFrame(frame, frame, replayData.col, replayData.row, replayData.color);
+    pskl.PixelUtils
+    .paintSimilarConnectedPixelsFromFrame(frame, frame, replayData.col, replayData.row, replayData.color);
   };
 })();
